@@ -163,6 +163,25 @@ Then I tuned QYawStd in QuadEstimatorEKF.txt to 0.8 and got the following:
 
 ![alt text](./pics/step4_tuned.png "After tuning QYawStd")
 
+I implemented the following code: 
+
+```c++
+    hPrime(6) = 1; //Since its linear, the derivative is [0, 0, 0, 0, 0, 0, 1]
+    
+    zFromX(0) = ekfState(6);
+    float diff = magYaw - ekfState(6);
+    
+    if (diff > F_PI)
+        zFromX(0) += 2.f*F_PI;
+    else if (diff < -F_PI)
+        zFromX(0) -= 2.f*F_PI;
+
+```
+
+Also I retuned QYawStd again to 0.2 and the result is the following: 
+
+  PASS: ABS(Quad.Est.E.Yaw-0.000000) was less than Quad.Est.S.Yaw for 79% of the time
+
 
 ## Implement the GPS update
 
