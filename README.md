@@ -124,7 +124,7 @@ Added the following to GetRbgPrime():
     RbgPrime(1,2) = cos_phi  * sin_theta * cos_psi + sin_phi * sin_psi;
 ```
 
-And added the following step to Predict():
+And added the following step to Predict() which is the Jacobian and Rbg' to predict the state covariance forward:
 
 ```c++
     gPrime(0,3) = dt;
