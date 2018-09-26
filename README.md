@@ -187,6 +187,15 @@ Also I retuned QYawStd again to 0.2 and the result is the following:
 
 Requirements: The estimator should correctly incorporate the GPS information to update the current state estimate.
 
+First I run the simulator with an ideal estimator and an ideal IMU and got the following result: 
+
+![alt text](./pics/step5_.png "ideal estimator and IMU")
+
+Step 2, i changed the value of Quad.UseIdealEstimator to 0 and got the following effect: 
+
+![alt text](./pics/step5_noideal.png "Turned off ideal estimator.")
+
+
 
 
 # Flight Evaluation
