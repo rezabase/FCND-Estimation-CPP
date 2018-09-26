@@ -51,6 +51,25 @@ The result after tuning the above values is shown in the pictiure below.
 Requirements: The improved integration scheme should result in an attitude estimator of < 0.1 rad for each of the Euler angles for a duration of at least 3 seconds during the simulation. The integration scheme should use quaternions to improve performance over the current simple integration scheme.
 
 
+I decided to use the non-linear approach using the Quaternion<float> class that was provided. Below is the code that I added to UpdateFromIMU():
+
+
+    Quaternion<float> quat = Quaternion<float>::FromEuler123_RPY(rollEst, pitchEst, ekfState(6)); //Convert Euler angles to Quartenion
+    quat.IntegrateBodyRate(gyro, dtIMU); //gyro value is pqr.
+    
+    float predictedPitch = quat.Pitch();
+    float predictedRoll = quat.Roll();
+    ekfState(6) = quat.Yaw();
+    
+    // normalize yaw to -pi .. pi
+    if (ekfState(6) > F_PI) ekfState(6) -= 2.f*F_PI;
+    if (ekfState(6) < -F_PI) ekfState(6) += 2.f*F_PI;
+
+
+The result was the following: 
+- PASS: ABS(Quad.Est.E.MaxEuler) was less than 0.100000 for at least 3.000000 seconds
+
+![alt text](./pics/step2.png "After implementing UpdateFromIMU()")
 
 
 ## Implement all of the elements of the prediction step for the estimator
