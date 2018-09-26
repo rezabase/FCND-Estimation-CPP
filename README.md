@@ -151,6 +151,7 @@ And the result is:
 
 
 
+
 ## Implement the magnetometer update
 
 Requirements: The update should properly include the magnetometer data into the state. Note that the solution should make sure to correctly measure the angle error between the current state and the magnetometer value (error should be the short way around, not the long way).
@@ -195,6 +196,12 @@ Step 2, i changed the value of Quad.UseIdealEstimator to 0 and got the following
 
 ![alt text](./pics/step5_noideal.png "Turned off ideal estimator.")
 
+Commented out the follwoing in config/11_GPSUpdate.txt and the result was as below: 
+
+#SimIMU.AccelStd = 0,0,0
+#SimIMU.GyroStd = 0,0,0
+
+![alt text](./pics/step5_real.png "More realistic IMU")
 
 
 
