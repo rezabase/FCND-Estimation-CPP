@@ -155,6 +155,13 @@ And the result is:
 
 Requirements: The update should properly include the magnetometer data into the state. Note that the solution should make sure to correctly measure the angle error between the current state and the magnetometer value (error should be the short way around, not the long way).
 
+I run 10_MagUpdate before impementing the magne. Before tuning the QYawStd parameter, the following was the result: 
+
+![alt text](./pics/step4_.png "Before tuning QYawStd")
+
+Then I tuned QYawStd in QuadEstimatorEKF.txt to 0.8 and got the following: 
+
+![alt text](./pics/step4_tuned.png "After tuning QYawStd")
 
 
 ## Implement the GPS update
