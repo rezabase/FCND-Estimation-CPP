@@ -1,5 +1,6 @@
 # FCND-Estimation-CPP
 Udacity Flying Car - Estimation Assignment
+
 Date: 01 Oct 2018
 
 
@@ -39,8 +40,6 @@ And consequesntly, I added the following values to the file config/6_Sensornoise
 - MeasuredStdDev_AccelXY = .51
 
 The result after tuning the above values is shown in the pictiure below. 
-
-Inline-style: 
 ![alt text](./pics/step1.png "Result after tuning standard deviation")
 
 
