@@ -105,8 +105,40 @@ Pre-implementation of GetRbgPrime():
 
 ![alt text](./pics/step3b.png "Before implementing GetRbgPrime()")
 
+Added the following to GetRbgPrime(): 
 
-After Implementation of GetRbgPrime():
+```c++
+    float cos_theta = cos(pitch);
+    float sin_theta = sin(pitch);
+    float cos_phi = cos(roll);
+    float sin_phi = sin(roll);
+    float sin_psi = sin(yaw);
+    float cos_psi = cos(yaw);
+    
+    RbgPrime(0,0) = -cos_theta * sin_psi;
+    RbgPrime(0,1) = -sin_phi * sin_theta * sin_psi - cos_theta * cos_psi;
+    RbgPrime(0,2) = -cos_phi * sin_theta * sin_psi + sin_phi   * cos_psi;
+    
+    RbgPrime(1,0) = cos_theta * cos_psi;
+    RbgPrime(1,1) = sin_phi  * sin_theta * cos_psi - cos_phi * sin_psi;
+    RbgPrime(1,2) = cos_phi  * sin_theta * cos_psi + sin_phi * sin_psi;
+```
+
+And added the following step to Predict():
+
+```c++
+    gPrime(0,3) = dt;
+    gPrime(1,4) = dt;
+    gPrime(2,5) = dt;
+    
+    gPrime(3, 6) = (RbgPrime(0) * accel).sum() * dt;
+    gPrime(4, 6) = (RbgPrime(1) * accel).sum() * dt;
+    gPrime(5, 6) = (RbgPrime(2) * accel).sum() * dt;
+    
+    ekfCov = gPrime * ekfCov * gPrime.transpose() + Q;
+```
+
+After Implementation of GetRbgPrime() and Predict():
 
 
 
