@@ -236,5 +236,9 @@ Requirements: For each step of the project, the final estimator should be able t
 Requirements: The controller developed in the previous project should be de-tuned to successfully meet the performance criteria of the final scenario (<1m error for entire box flight).
 
 
+Replaced the QuadController.cpp and QuadControlParams.txt with the code from the previouse assignment as instructed. The quadcopter couldnt follow the path well to start with but after retuning the parameters in QuadControlParams.txt file, it worked well. 
 
+The screenshot below shows the final result. 
+
+![alt text](./pics/step6.png "Final result after step 6")
 
