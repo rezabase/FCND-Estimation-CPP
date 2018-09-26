@@ -25,14 +25,14 @@ Later, I used a few lines python code to read the log files and calculate the st
   gps_data = np.loadtxt('./config/log/Graph1.txt',delimiter=',',dtype='Float64',skiprows=1)[:,1]
   acc_data = np.loadtxt('./config/log/Graph2.txt',delimiter=',',dtype='Float64',skiprows=1)[:,1]
 
-  print('GPS X Std: {}'.format(np.std(gps_data)))
-  print('IMU X Std: {}'.format(np.std(acc_data)))
+  print('GPS Std: {}'.format(np.std(gps_data)))
+  print('IMU Std: {}'.format(np.std(acc_data)))
   ```
   
 The following values were calculated: 
   
-- GPS X Std: 0.717748979625617
-- IMU X Std: 0.5094537635047416
+- GPS Std: 0.717748979625617
+- IMU Std: 0.5094537635047416
 
 And consequesntly, I added the following values to the file config/6_Sensornoise.txt:
 
