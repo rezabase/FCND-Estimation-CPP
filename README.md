@@ -53,7 +53,7 @@ Requirements: The improved integration scheme should result in an attitude estim
 
 I decided to use the non-linear approach using the Quaternion<float> class that was provided. Below is the code that I added to UpdateFromIMU():
 
-
+  ```c++
     Quaternion<float> quat = Quaternion<float>::FromEuler123_RPY(rollEst, pitchEst, ekfState(6)); //Convert Euler angles to Quartenion
     quat.IntegrateBodyRate(gyro, dtIMU); //gyro value is pqr.
     
@@ -64,7 +64,7 @@ I decided to use the non-linear approach using the Quaternion<float> class that 
     // normalize yaw to -pi .. pi
     if (ekfState(6) > F_PI) ekfState(6) -= 2.f*F_PI;
     if (ekfState(6) < -F_PI) ekfState(6) += 2.f*F_PI;
-
+  ```
 
 The result was the following: 
 - PASS: ABS(Quad.Est.E.MaxEuler) was less than 0.100000 for at least 3.000000 seconds
