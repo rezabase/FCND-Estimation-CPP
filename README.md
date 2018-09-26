@@ -140,6 +140,15 @@ And added the following step to Predict() which is the Jacobian and Rbg' to pred
 
 After Implementation of GetRbgPrime() and Predict():
 
+I tuned the following parameters: 
+
+- QPosXYStd = 0.04
+- QVelXYStd = 0.3
+
+And the result is: 
+
+![alt text](./pics/step3c.png "Before implementing Predict() and tuning the parameters")
+
 
 
 ## Implement the magnetometer update
