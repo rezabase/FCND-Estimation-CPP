@@ -213,11 +213,11 @@ And finally this is what I implemented in UpdateFromGPS():
 
 I had to re-tune the GPS parameters to get the best result. These are the final tuning parameters: 
 
-  # GPS measurement std deviations
-  GPSPosXYStd = 1
-  GPSPosZStd = 2 
-  GPSVelXYStd = .1
-  GPSVelZStd = 0.05
+    # GPS measurement std deviations
+    GPSPosXYStd = 1
+    GPSPosZStd = 2 
+    GPSVelXYStd = .1
+    GPSVelZStd = 0.05
 
 The screenshot below shows the final result:
 ![alt text](./pics/step5_result.png "Final result after tuning GPS")
