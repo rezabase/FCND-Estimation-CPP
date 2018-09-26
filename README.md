@@ -77,6 +77,39 @@ The result was the following:
 Requirements: The prediction step should include the state update element (PredictState() function), a correct calculation of the Rgb prime matrix, and a proper update of the state covariance. The acceleration should be accounted for as a command in the calculation of gPrime. The covariance update should follow the classic EKF update equation.
 
 
+#### PredictState()
+
+Before implementing the funciton: 
+
+![alt text](./pics/step3_.png "Before PredictState()")
+
+```c++
+    predictedState(0) = curState(0) + curState(3) * dt; //x position
+    predictedState(1) = curState(1) + curState(4) * dt; //y position
+    predictedState(2) = curState(2) + curState(5) * dt; //z position
+    
+    V3F accelI = attitude.Rotate_BtoI(accel); //rotate "accel" vector from body frame to inertial frame
+    
+    predictedState(3) = curState(3) + dt * accelI.x; //x_dot velocity
+    predictedState(4) = curState(4) + dt * accelI.y; //z_dot velocity
+    predictedState(5) = curState(5) + dt * accelI.z - dt * CONST_GRAVITY; //z_dot velocity
+```
+
+Below screenshot shows the result after implementing the PredictState() function.
+
+![alt text](./pics/step3a.png "After PredictState()")
+
+#### GetRbgPrime()
+
+Pre-implementation of GetRbgPrime(): 
+
+![alt text](./pics/step3b.png "Before implementing GetRbgPrime()")
+
+
+After Implementation of GetRbgPrime():
+
+
+
 ## Implement the magnetometer update
 
 Requirements: The update should properly include the magnetometer data into the state. Note that the solution should make sure to correctly measure the angle error between the current state and the magnetometer value (error should be the short way around, not the long way).
