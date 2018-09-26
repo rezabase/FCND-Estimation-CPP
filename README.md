@@ -10,6 +10,39 @@ Date: 01 Oct 2018
 
 Requirements: The calculated standard deviation should correctly capture ~68% of the sensor measurements. Your writeup should describe the method used for determining the standard deviation given the simulated sensor measurements.
 
+Following the instructions, I run the scenario 06_NoisySensors to collect sensor data into:
+
+- config/log/Graph1.txt (GPS X data)
+- config/log/Graph2.txt (Accelerometer X data)
+
+Later, I used a few lines python code to read the log files and calculate the standard deviation. The python code follows below: 
+
+  ```python
+  import numpy as np
+  import matplotlib.pyplot as plt
+
+  gps_data = np.loadtxt('./config/log/Graph1.txt',delimiter=',',dtype='Float64',skiprows=1)[:,1]
+  acc_data = np.loadtxt('./config/log/Graph2.txt',delimiter=',',dtype='Float64',skiprows=1)[:,1]
+
+  print('GPS X Std: {}'.format(np.std(gps_data)))
+  print('IMU X Std: {}'.format(np.std(acc_data)))
+  ```
+  
+The following values were calculated: 
+  
+- GPS X Std: 0.717748979625617
+- IMU X Std: 0.5094537635047416
+
+And consequesntly, I added the following values to the file config/6_Sensornoise.txt:
+
+- MeasuredStdDev_GPSPosXY = 0.717
+- MeasuredStdDev_AccelXY = .51
+
+The result after tuning the above values is shown in the pictiure below. 
+
+Inline-style: 
+![alt text](./pics/step1.png "Result after tuning standard deviation")
+
 
 
 
