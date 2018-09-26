@@ -203,6 +203,24 @@ Commented out the follwoing in config/11_GPSUpdate.txt and the result was as bel
 
 ![alt text](./pics/step5_real.png "More realistic IMU")
 
+And finally this is what I implemented in UpdateFromGPS():
+
+```c++
+    hPrime.topLeftCorner(QUAD_EKF_NUM_STATES - 1, QUAD_EKF_NUM_STATES - 1) = MatrixXf::Identity(QUAD_EKF_NUM_STATES - 1, QUAD_EKF_NUM_STATES - 1);
+    zFromX = hPrime * ekfState;
+
+```
+
+I had to re-tune the GPS parameters to get the best result. These are the final tuning parameters: 
+
+  # GPS measurement std deviations
+  GPSPosXYStd = 1
+  GPSPosZStd = 2 
+  GPSVelXYStd = .1
+  GPSVelZStd = 0.05
+
+The screenshot below shows the final result:
+![alt text](./pics/step5_result.png "Final result after tuning GPS")
 
 
 # Flight Evaluation
