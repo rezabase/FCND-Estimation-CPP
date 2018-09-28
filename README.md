@@ -1,7 +1,7 @@
 # FCND-Estimation-CPP
 Udacity Flying Car - Estimation Assignment
 
-Date: 01 Oct 2018
+Date: 28 Oct 2018
 
 
 # Implement Estimator
@@ -34,12 +34,12 @@ The following values were calculated:
 - GPS Std: 0.717748979625617
 - IMU Std: 0.5094537635047416
 
-And consequesntly, I added the following values to the file config/6_Sensornoise.txt:
+And consequently, I added the following values to the file config/6_Sensornoise.txt:
 
 - MeasuredStdDev_GPSPosXY = 0.717
 - MeasuredStdDev_AccelXY = .51
 
-The result after tuning the above values is shown in the pictiure below. 
+The result after tuning the above values is shown in the picture below. 
 ![alt text](./pics/step1.png "Result after tuning standard deviation")
 
 
@@ -79,7 +79,7 @@ Requirements: The prediction step should include the state update element (Predi
 
 #### PredictState()
 
-Before implementing the funciton: 
+Before implementing the function: 
 
 ![alt text](./pics/step3_.png "Before PredictState()")
 
@@ -156,7 +156,7 @@ And the result is:
 
 Requirements: The update should properly include the magnetometer data into the state. Note that the solution should make sure to correctly measure the angle error between the current state and the magnetometer value (error should be the short way around, not the long way).
 
-I run 10_MagUpdate before impementing the magne. Before tuning the QYawStd parameter, the following was the result: 
+I run 10_MagUpdate before implementing the magnetometer. Before tuning the QYawStd parameter, the following was the result: 
 
 ![alt text](./pics/step4_.png "Before tuning QYawStd")
 
@@ -236,7 +236,7 @@ Requirements: For each step of the project, the final estimator should be able t
 Requirements: The controller developed in the previous project should be de-tuned to successfully meet the performance criteria of the final scenario (<1m error for entire box flight).
 
 
-Replaced the QuadController.cpp and QuadControlParams.txt with the code from the previouse assignment as instructed. The quadcopter couldnt follow the path well to start with but after retuning the parameters in QuadControlParams.txt file, it worked well. 
+Replaced the QuadController.cpp and QuadControlParams.txt with the code from the previous assignment as instructed. The quadcopter couldn’t follow the path well to start with but after retuning the parameters in QuadControlParams.txt file, it worked well. 
 
 The screenshot below shows the final result. 
 
