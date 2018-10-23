@@ -242,3 +242,4 @@ The screenshot below shows the final result.
 
 ![alt text](./pics/step6.png "Final result after step 6")
 
+
